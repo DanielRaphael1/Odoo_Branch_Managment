@@ -1,6 +1,7 @@
 # Branch Management Module for Odoo 18 Community
 
 This module provides multi-branch support for Odoo Community Edition, allowing complete data isolation between different branches of your organization.
+Feel free to use it, and leave a ⭐ if it was of use for you
 
 ## Features
 
