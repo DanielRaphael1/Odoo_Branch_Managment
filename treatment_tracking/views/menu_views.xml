@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_treatment_root"
+              name="ניהול טיפולים"
+              sequence="10"/>
+
+    <menuitem id="menu_treatment_configuration"
+              name="הגדרות"
+              parent="menu_treatment_root"
+              sequence="100"/>
+
+    <menuitem id="menu_treatment_type"
+              name="סוגי טיפולים"
+              parent="menu_treatment_configuration"
+              action="treatment_tracking.action_treatment_type"
+              sequence="10"/>
+</odoo> 

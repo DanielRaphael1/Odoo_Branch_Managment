@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_partner_form_inherit_treatment" model="ir.ui.view">
+        <field name="name">res.partner.form.inherit.treatment</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="טיפולים שהושלמו" name="completed_treatments">
+                    <button name="action_view_completed_treatments" 
+                            type="object" 
+                            class="btn-link"
+                            icon="fa-calendar-check-o">
+                        <field name="completed_treatment_count" widget="statinfo" string="טיפולים שהושלמו"/>
+                    </button>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="action_view_completed_treatments" model="ir.actions.act_window">
+        <field name="name">טיפולים שהושלמו</field>
+        <field name="res_model">calendar.event</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('partner_id', '=', active_id), ('treatment_done', '=', True)]</field>
+        <field name="context">{'create': False}</field>
+    </record>
+</odoo> 

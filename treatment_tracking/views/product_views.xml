@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="product_template_form_view_inherit_treatment" model="ir.ui.view">
+        <field name="name">product.template.form.inherit.treatment</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="טיפול" groups="sales_team.group_sale_salesman">
+                    <group>
+                        <field name="treatment_type_id"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo> 
