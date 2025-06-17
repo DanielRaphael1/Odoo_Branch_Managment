@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Demo Branches -->
+        <record id="branch_jerusalem" model="branch.branch">
+            <field name="name">Jerusalem</field>
+            <field name="code">JLM</field>
+        </record>
+
+        <record id="branch_ashdod" model="branch.branch">
+            <field name="name">Ashdod</field>
+            <field name="code">ASD</field>
+        </record>
+
+        <record id="branch_beersheba" model="branch.branch">
+            <field name="name">Beersheba</field>
+            <field name="code">BRS</field>
+        </record>
+
+        <record id="branch_modiin" model="branch.branch">
+            <field name="name">Modiin</field>
+            <field name="code">MDN</field>
+        </record>
+
+        <!-- Demo Users -->
+        <record id="user_jerusalem" model="res.users">
+            <field name="name">Jerusalem Manager</field>
+            <field name="login">jerusalem.manager</field>
+            <field name="email">jerusalem@example.com</field>
+            <field name="branch_id" ref="branch_jerusalem"/>
+            <field name="groups_id" eval="[(4, ref('branch_management.group_branch_manager'))]"/>
+        </record>
+
+        <record id="user_ashdod" model="res.users">
+            <field name="name">Ashdod Manager</field>
+            <field name="login">ashdod.manager</field>
+            <field name="email">ashdod@example.com</field>
+            <field name="branch_id" ref="branch_ashdod"/>
+            <field name="groups_id" eval="[(4, ref('branch_management.group_branch_manager'))]"/>
+        </record>
+
+        <record id="user_beersheba" model="res.users">
+            <field name="name">Beersheba Manager</field>
+            <field name="login">beersheba.manager</field>
+            <field name="email">beersheba@example.com</field>
+            <field name="branch_id" ref="branch_beersheba"/>
+            <field name="groups_id" eval="[(4, ref('branch_management.group_branch_manager'))]"/>
+        </record>
+
+        <record id="user_modiin" model="res.users">
+            <field name="name">Modiin Manager</field>
+            <field name="login">modiin.manager</field>
+            <field name="email">modiin@example.com</field>
+            <field name="branch_id" ref="branch_modiin"/>
+            <field name="groups_id" eval="[(4, ref('branch_management.group_branch_manager'))]"/>
+        </record>
+
+        <!-- Update Branch Managers -->
+        <record id="branch_jerusalem" model="branch.branch">
+            <field name="manager_id" ref="user_jerusalem"/>
+        </record>
+
+        <record id="branch_ashdod" model="branch.branch">
+            <field name="manager_id" ref="user_ashdod"/>
+        </record>
+
+        <record id="branch_beersheba" model="branch.branch">
+            <field name="manager_id" ref="user_beersheba"/>
+        </record>
+
+        <record id="branch_modiin" model="branch.branch">
+            <field name="manager_id" ref="user_modiin"/>
+        </record>
+    </data>
+</odoo> 

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Branch Manager Group -->
+        <record id="group_branch_manager" model="res.groups">
+            <field name="name">Branch Manager</field>
+            <field name="category_id" ref="base.module_category_administration"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+
+        <!-- Record Rules -->
+        <record id="branch_partner_rule" model="ir.rule">
+            <field name="name">Branch Partner Rule</field>
+            <field name="model_id" ref="base.model_res_partner"/>
+            <field name="domain_force">['|', '|', ('branch_id', '=', False), ('branch_id', '=', user.branch_id.id), ('create_uid', '=', user.id)]</field>
+            <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <record id="branch_employee_rule" model="ir.rule">
+            <field name="name">Branch Employee Rule</field>
+            <field name="model_id" ref="hr.model_hr_employee"/>
+            <field name="domain_force">['|', '|', ('branch_id', '=', False), ('branch_id', '=', user.branch_id.id), ('create_uid', '=', user.id)]</field>
+            <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <record id="branch_calendar_rule" model="ir.rule">
+            <field name="name">Branch Calendar Rule</field>
+            <field name="model_id" ref="calendar.model_calendar_event"/>
+            <field name="domain_force">['|', '|', ('branch_id', '=', False), ('branch_id', '=', user.branch_id.id), ('create_uid', '=', user.id)]</field>
+            <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <record id="branch_crm_rule" model="ir.rule">
+            <field name="name">Branch CRM Rule</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="domain_force">['|', '|', ('branch_id', '=', False), ('branch_id', '=', user.branch_id.id), ('create_uid', '=', user.id)]</field>
+            <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <!-- Admin can see all -->
+        <record id="branch_admin_rule" model="ir.rule">
+            <field name="name">Branch Admin Rule</field>
+            <field name="model_id" ref="model_branch_branch"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="groups" eval="[(4, ref('base.group_system'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <!-- Admin can see all partners -->
+        <record id="branch_partner_admin_rule" model="ir.rule">
+            <field name="name">Branch Partner Admin Rule</field>
+            <field name="model_id" ref="base.model_res_partner"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="groups" eval="[(4, ref('base.group_system'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <!-- Admin can see all employees -->
+        <record id="branch_employee_admin_rule" model="ir.rule">
+            <field name="name">Branch Employee Admin Rule</field>
+            <field name="model_id" ref="hr.model_hr_employee"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="groups" eval="[(4, ref('base.group_system'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <!-- Admin can see all calendar events -->
+        <record id="branch_calendar_admin_rule" model="ir.rule">
+            <field name="name">Branch Calendar Admin Rule</field>
+            <field name="model_id" ref="calendar.model_calendar_event"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="groups" eval="[(4, ref('base.group_system'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <!-- Admin can see all CRM leads -->
+        <record id="branch_crm_admin_rule" model="ir.rule">
+            <field name="name">Branch CRM Admin Rule</field>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="groups" eval="[(4, ref('base.group_system'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+    </data>
+</odoo> 

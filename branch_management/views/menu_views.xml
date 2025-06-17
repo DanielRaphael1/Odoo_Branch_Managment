@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Main Menu -->
+        <menuitem id="menu_branch_root"
+                  name="Branches"
+                  web_icon="branch_management,static/description/icon.png"
+                  sequence="10"/>
+
+        <!-- Submenus -->
+        <menuitem id="menu_branch_management"
+                  name="Branch Management"
+                  parent="menu_branch_root"
+                  sequence="10"/>
+
+        <menuitem id="menu_branch"
+                  name="Branches"
+                  parent="menu_branch_management"
+                  action="action_branch"
+                  sequence="10"/>
+    </data>
+</odoo> 

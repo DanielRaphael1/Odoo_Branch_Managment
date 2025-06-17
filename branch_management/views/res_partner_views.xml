@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Partner Form View -->
+        <record id="view_partner_form_inherit_branch" model="ir.ui.view">
+            <field name="name">res.partner.form.inherit.branch</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='vat']" position="after">
+                    <field name="branch_id" groups="branch_management.group_branch_manager"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Partner Tree View -->
+        <record id="view_partner_tree_inherit_branch" model="ir.ui.view">
+            <field name="name">res.partner.tree.inherit.branch</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='complete_name']" position="after">
+                    <field name="branch_id" optional="show"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Partner Search View -->
+        <record id="view_partner_search_inherit_branch" model="ir.ui.view">
+            <field name="name">res.partner.search.inherit.branch</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_res_partner_filter"/>
+            <field name="arch" type="xml">
+                <xpath expr="//filter[@name='type_company']" position="after">
+                    <separator/>
+                    <filter string="Branch" name="branch" context="{'group_by': 'branch_id'}"/>
+                </xpath>
+                <xpath expr="//group" position="inside">
+                    <filter string="Branch" name="branch_id" context="{'group_by': 'branch_id'}"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo> 

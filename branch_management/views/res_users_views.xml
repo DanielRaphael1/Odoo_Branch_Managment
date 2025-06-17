@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- User Form View -->
+        <record id="view_users_form_inherit_branch" model="ir.ui.view">
+            <field name="name">res.users.form.inherit.branch</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook" position="inside">
+                    <page string="Branch Information" groups="branch_management.group_branch_manager">
+                        <group>
+                            <field name="branch_id"/>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- User Tree View -->
+        <record id="view_users_tree_inherit_branch" model="ir.ui.view">
+            <field name="name">res.users.tree.inherit.branch</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="branch_id" optional="show"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- User Search View -->
+        <record id="view_users_search_inherit_branch" model="ir.ui.view">
+            <field name="name">res.users.search.inherit.branch</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_search"/>
+            <field name="arch" type="xml">
+                <xpath expr="//filter[@name='filter_no_share']" position="after">
+                    <separator/>
+                    <filter string="Branch" name="branch" context="{'group_by': 'branch_id'}"/>
+                </xpath>
+                <xpath expr="//search" position="inside">
+                    <group expand="0" string="Group By">
+                        <filter string="Branch" name="branch_id" context="{'group_by': 'branch_id'}"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo> 

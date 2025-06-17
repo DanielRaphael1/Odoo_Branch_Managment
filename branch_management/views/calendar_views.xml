@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Calendar Event Form View -->
+        <record id="view_calendar_event_form_inherit_branch" model="ir.ui.view">
+            <field name="name">calendar.event.form.inherit.branch</field>
+            <field name="model">calendar.event</field>
+            <field name="inherit_id" ref="calendar.view_calendar_event_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook" position="inside">
+                    <page string="Branch Information" groups="branch_management.group_branch_manager">
+                        <group>
+                            <field name="branch_id"/>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Calendar Event Tree View -->
+        <record id="view_calendar_event_tree_inherit_branch" model="ir.ui.view">
+            <field name="name">calendar.event.tree.inherit.branch</field>
+            <field name="model">calendar.event</field>
+            <field name="inherit_id" ref="calendar.view_calendar_event_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="branch_id" optional="show"/>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- Calendar Event Search View -->
+        <record id="view_calendar_event_search_inherit_branch" model="ir.ui.view">
+            <field name="name">calendar.event.search.inherit.branch</field>
+            <field name="model">calendar.event</field>
+            <field name="inherit_id" ref="calendar.view_calendar_event_search"/>
+            <field name="arch" type="xml">
+                <xpath expr="//filter[@name='mymeetings']" position="after">
+                    <separator/>
+                    <filter string="Branch" name="branch" context="{'group_by': 'branch_id'}"/>
+                </xpath>
+                <xpath expr="//group" position="inside">
+                    <filter string="Branch" name="branch_id" context="{'group_by': 'branch_id'}"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo> 
